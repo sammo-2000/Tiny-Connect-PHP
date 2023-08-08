@@ -18,6 +18,7 @@ function Method($method)
 
 function JSON($string)
 {
+    ob_clean();
     header('Content-Type: application/json');
     echo json_encode($string);
 }

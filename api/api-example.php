@@ -1,32 +1,21 @@
 <?php
-namespace controller;
+namespace API;
 
 use model\Dbh;
 
-$request = $_SERVER['REQUEST_METHOD'];
+$ExampleAPI = new ExampleAPI();
+$ExampleAPI->myFunction();
 
-$ExampleContro = new ExampleContro();
-
-$ExampleContro->notSupported();
-
-$ExampleContro->output();
-
-class ExampleContro extends Dbh
+class ExampleAPI extends Dbh
 {
     private $response;
-
-    public function notSupported()
+    public function myFunction()
     {
         $this->response = [
-            'error_code' => 405,
-            'status' => 'error',
-            'message' => 'Bad Request: Invalid parameters provided',
-            'currentMethod' => $_SERVER['REQUEST_METHOD']
+            'status' => 'success',
+            'message' => 'Example API is ran'
         ];
-    }
-
-    public function output()
-    {
+        http_response_code(200);
         JSON($this->response);
     }
 }
