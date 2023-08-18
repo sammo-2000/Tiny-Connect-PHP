@@ -1,0 +1,68 @@
+header img {
+    height: 50px;
+}
+
+
+header {
+    background-color: white;
+}
+
+header :is(div, ul.list) {
+    display: flex;
+    align-items: center;
+    padding-block: 5px;
+    list-style: none;
+}
+
+header div {
+    gap: 10px;
+    font-size: 2rem;
+    font-family: var(--font);
+}
+
+header a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+form {
+    width: clamp(250px, 100%, 400px);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+input {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-bottom-color: var(--theme);
+    outline: none;
+}
+
+input:focus, input:hover {
+    background-color: var(--theme-fade);
+}
+
+.login h1 {
+    font-family: var(--font);
+    text-align: center;
+}
+
+.login>div {
+    display: flex;
+    gap: 6px;
+}
+
+.login>div a {
+    width: 100%;
+}
+
+.login>a,
+.login>p>a {
+    color: red;
+    font-weight: 800;
+}

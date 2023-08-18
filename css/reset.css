@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+:root {
+    --font: 'Bree Serif', serif;
+
+    --theme: #ff0000;
+    --theme-light: #ff3232;
+    --theme-fade: #ff00000d;
+
+    --transition: all ease-in-out 400ms;
+
+    --red-mash: linear-gradient(to right, #ff5d5a, #ff4843, #ff3028, #ff0000);
+}
+
+html {
+    font-family: 'Lora', serif;
+    background-color: aliceblue;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header,
+main,
+footer {
+    padding-inline: 10px;
+}
