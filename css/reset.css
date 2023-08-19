@@ -5,6 +5,7 @@
     margin: 0;
     box-sizing: border-box;
     color: inherit;
+    list-style: none;
 }
 
 :root {
@@ -13,10 +14,12 @@
     --theme: #ff0000;
     --theme-light: #ff3232;
     --theme-fade: #ff00000d;
+    --fade: #b7b7b7;
 
     --transition: all ease-in-out 400ms;
 
     --red-mash: linear-gradient(to right, #ff5d5a, #ff4843, #ff3028, #ff0000);
+    --white-mash: linear-gradient(to right bottom, #ffffff, #fbfbfb, #f7f7f7, #f3f3f3, #efefef, #efefef, #efeff0, #eeeff0, #f1f3f4, #f3f7f8, #f5fbfc, #f8ffff);
 }
 
 html {
@@ -32,9 +35,7 @@ body {
 
 main {
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding-block: 10px;
 }
 
 header,

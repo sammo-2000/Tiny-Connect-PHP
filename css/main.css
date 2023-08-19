@@ -1,17 +1,14 @@
-header img {
-    height: 50px;
-}
-
-
 header {
     background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
 header :is(div, ul.list) {
     display: flex;
     align-items: center;
     padding-block: 5px;
-    list-style: none;
 }
 
 header div {
@@ -19,6 +16,11 @@ header div {
     font-size: 2rem;
     font-family: var(--font);
 }
+
+header img {
+    height: 50px;
+}
+
 
 header a {
     text-decoration: none;
@@ -43,7 +45,8 @@ input {
     outline: none;
 }
 
-input:focus, input:hover {
+input:focus,
+input:hover {
     background-color: var(--theme-fade);
 }
 
@@ -65,4 +68,83 @@ input:focus, input:hover {
 .login>p>a {
     color: red;
     font-weight: 800;
+}
+
+#profile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#profile .no-found {
+    margin: 30px auto;
+}
+
+.profile-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-image: var(--white-mash);
+}
+
+.profile-top .img {
+    margin: auto;
+}
+
+.profile-top img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 250px;
+    padding: 0;
+}
+
+.profile-details {
+    flex-grow: 1;
+}
+
+.profile-detail-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--fade);
+}
+
+.profile-detail-top p {
+    font-family: var(--font);
+    font-size: 1.3rem;
+}
+
+.profile-detail-top span {
+    font-size: 0.8rem;
+    color: var(--fade);
+}
+
+.profile-detail-bottom {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center;
+}
+
+.profile-detail-bottom p {
+    font-family: var(--font);
+    font-size: 1.1rem;
+}
+
+.profile-detail-bottom span {
+    font-size: 0.9rem;
+}
+
+.profile-bottom ul {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--fade);
+    font-family: var(--font);
+}
+
+.profile-bottom section {
+    padding-top: 10px;
 }

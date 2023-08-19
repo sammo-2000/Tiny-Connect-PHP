@@ -79,3 +79,12 @@ function JSON($string)
     echo json_encode($string);
     exit;
 }
+
+function User($id = null)
+{
+    if ($id == null) {
+        echo "<div style=\"display: none\" id=\"userID\"> " . $_SESSION['userID'] . "</div>";
+    } else {
+        echo "<div style=\"display: none\" id=\"userID\"> " . $id . "</div>";
+    }
+}

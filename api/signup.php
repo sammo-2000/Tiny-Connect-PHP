@@ -2,6 +2,7 @@
 require __DIR__ . '/../class/User.php';
 use User\User;
 
+$User = new User();
 
 // Set the appropriate headers for JSON response
 header('Content-Type: application/json');
@@ -40,7 +41,6 @@ if ($method === 'POST') {
         exit();
     }
 
-    $User = new User();
     $userDetail = $User->getUserByEmail($email);
 
     if (!empty($userDetail)) {

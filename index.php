@@ -29,16 +29,16 @@ if (!isset($_SESSION['last_regeneration'])) {
     }
 }
 
-error_reporting(E_ALL);
-ini_set('display_errors', 0);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 0);
 
-function customerErrorHandler($errNo, $errStr, $errFile, $errLine)
-{
-    $message = "Error: [$errNo] $errStr - $errFile - $errLine";
-    error_log($message . PHP_EOL, 3, "error_log.txt");
-}
+// function customerErrorHandler($errNo, $errStr, $errFile, $errLine)
+// {
+//     $message = "Error: [$errNo] $errStr - $errFile - $errLine";
+//     error_log($message . PHP_EOL, 3, "error_log.txt");
+// }
 
-set_error_handler('customerErrorHandler');
+// set_error_handler('customerErrorHandler');
 
 require __DIR__ . '/core/Dbh.php';
 require __DIR__ . '/core/function.php';
