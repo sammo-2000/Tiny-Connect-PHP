@@ -2,8 +2,8 @@
 $title = 'Profile';
 $script = 'profile';
 require_once __DIR__ . '/../include/head.php';
-?>
-<?= isset($userID) ? User($userID) : User() ?>
+isset($userID) ? User($userID) : User()
+    ?>
 <div id="profile">
     <!-- Profile top -->
     <div class="profile-top box">
@@ -20,7 +20,7 @@ require_once __DIR__ . '/../include/head.php';
                 if (isset($userID) && $userID != $_SESSION['userID']) {
                     echo '<button class="btn" id="follow"></button>';
                 } else {
-                    echo '<a href="/profile-edit" class="btn fit">Edit</a>';
+                    echo '<a href="/profile/edit" class="btn fit">Edit</a>';
                 }
                 ?>
             </div>
@@ -42,6 +42,7 @@ require_once __DIR__ . '/../include/head.php';
                     <span id="Followers"></span>
                 </div>
             </div>
+            <p class="bio"></p>
         </div>
     </div>
     <!-- Profile top end -->

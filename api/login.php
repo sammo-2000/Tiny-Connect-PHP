@@ -51,6 +51,7 @@ if ($method === 'POST') {
     $_SESSION['auth'] = true;
     $_SESSION['userID'] = $userDetail['userID'];
     $_SESSION['role'] = $userDetail['role'];
+    $_SESSION['name'] = $userDetail['name'];
     http_response_code(200);
     echo json_encode(['success' => 'success', 'message' => 'Login successful!']);
     exit();

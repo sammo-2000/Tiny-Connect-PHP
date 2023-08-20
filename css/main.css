@@ -37,17 +37,26 @@ form {
     gap: 25px;
 }
 
-input {
+input,
+textarea {
     font-size: 16px;
     padding: 5px;
     border: 1px solid transparent;
     border-bottom-color: var(--theme);
     outline: none;
+    resize: none;
+    font-family: 'Lora', serif;
 }
 
 input:focus,
-input:hover {
+input:hover,
+textarea:focus,
+textarea:hover {
     background-color: var(--theme-fade);
+}
+
+.login {
+    margin-block: 100px;
 }
 
 .login h1 {
@@ -94,14 +103,17 @@ input:hover {
 .profile-top img {
     height: 200px;
     width: 200px;
-    object-fit: cover;
-    object-position: center;
     border-radius: 250px;
     padding: 0;
 }
 
 .profile-details {
     flex-grow: 1;
+    max-width: calc(100% - 220px);
+}
+
+.profile-details > p {
+    padding-top: 20px;
 }
 
 .profile-detail-top {
@@ -147,4 +159,28 @@ input:hover {
 
 .profile-bottom section {
     padding-top: 10px;
+}
+
+.update-profile label {
+    transition: var(--transition);
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.update-profile label:hover {
+    filter: brightness(0.8);
+}
+
+.update-profile label img {
+    width: 250px;
+    height: 250px;
+    border-radius: 250px;
+    padding: 0;
+}
+
+.update-profile input[name="image"] {
+    display: none;
 }

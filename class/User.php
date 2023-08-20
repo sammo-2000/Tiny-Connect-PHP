@@ -6,6 +6,7 @@ use Model\Dbh;
 class User extends Dbh
 {
 
+    // Sign up page
     public function create(array $data)
     {
         // Implement your create logic here
@@ -14,7 +15,7 @@ class User extends Dbh
 
     public function read(int $id)
     {
-        $user = $this->fetch('SELECT `userID`, `name`, `image`, `joinedAt` FROM `user` WHERE `userID` = ?', [$id]);
+        $user = $this->fetch('SELECT `userID`, `name`, `image`, `joinedAt`, `bio` FROM `user` WHERE `userID` = ?', [$id]);
 
         if (empty($user)) {
             http_response_code(400);
@@ -58,6 +59,11 @@ class User extends Dbh
             $isFollowing = true;
         }
 
+        if ($id == $_SESSION['userID'])
+        {
+            $isFollowing = 'ME';
+        }
+
         return [
             'user' => $user,
             'posts' => $posts,
@@ -74,17 +80,18 @@ class User extends Dbh
         ];
     }
 
-
-
-    public function update(int $id, array $data)
-    {
-        $data[] = $id;
-        $this->db('UPDATE `users` SET `displayName`= ?, `profile-image`= ?, `bio`= ? WHERE `userID` = ?', []);
-    }
-
     public function delete(int $id)
     {
-        // Implement your delete logic here
+        $images = $this->fetchAll('SELECT * FROM `post` WHERE `uploaderID` = ?', [$id]);
+        foreach ($images as $image) {
+            unlink($image['image']);
+        }
+        $user = $this->fetch('SELECT * FROM `user` WHERE `userID` = ?', [$id]);
+        unlink($user['image']);
+        $this->db('DELETE FROM `post` WHERE `uploaderID` = ?', [$id]);
+        $this->db('DELETE FROM `blog` WHERE `uploaderID` = ?', [$id]);
+        $this->db('DELETE FROM `follow` WHERE `followID` = ? OR `followingID` = ?', [$id, $id]);
+        $this->db('DELETE FROM `user` WHERE `userID` = ?', [$id]);
     }
 
     public function getAll()
@@ -125,5 +132,26 @@ class User extends Dbh
 
         return $userDetail;
 
+    }
+
+    // Profile edit
+    public function updateImg(string $id, string $image)
+    {
+        $this->db('UPDATE `user` SET `image`= ? WHERE `userID` = ?', ['/' . $image, $id]);
+    }
+
+    public function updateName(string $id, string $name)
+    {
+        $this->db('UPDATE `user` SET `name`= ? WHERE `userID` = ?', [$name, $id]);
+    }
+
+    public function updateBio(string $id, string $bio)
+    {
+        $this->db('UPDATE `user` SET `bio`= ? WHERE `userID` = ?', [$bio, $id]);
+    }
+    public function getCurrentImagePath()
+    {
+        $result = $this->fetch('SELECT `image` FROM `user` WHERE `userID` = ?', [$_SESSION['userID']]);
+        return $result['image'];
     }
 }

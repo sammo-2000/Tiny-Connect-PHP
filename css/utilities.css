@@ -1,3 +1,8 @@
+img {
+    object-fit: cover;
+    object-position: center;
+}
+
 .no-found {
     text-align: center;
     margin: 30px 10px;
@@ -5,6 +10,17 @@
     font-family: var(--font);
     text-transform: capitalize;
     color: var(--fade);
+}
+
+.loading-icon {
+    display: none;
+}
+
+.loading-icon i {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--theme);
+    width: 100%;
 }
 
 #error {
@@ -57,6 +73,13 @@
     text-decoration: none;
     cursor: pointer;
     font-size: 16px;
+}
+
+.btn-white {
+    background-color: white;
+    background-image: none;
+    color: var(--theme);
+    border: 1px solid var(--theme);
 }
 
 .btn:hover {

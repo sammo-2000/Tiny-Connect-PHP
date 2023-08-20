@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const blogs = document.getElementById('blogs')
     const following = document.getElementById('following')
     const Followers = document.getElementById('Followers')
+    const bio = document.querySelector('.bio')
 
     // START OF TAB SWITCH ............................................................
     const tabs = document.querySelectorAll(".tab");
@@ -85,13 +86,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             try {
                 const response = await fetch(`/api/follow/${userID}`)
                 const data = await response.json()
-                console.log(data)
                 getData()
             }
             catch (error) {
                 console.error('Error sending API request:', error);
             }
-    
+
         })
     }
     // END OF FOLLOWING THE USER ......................................................
@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 blogs.innerText = data.blogCount
                 following.innerText = data.following
                 Followers.innerText = data.followers
+                bio.innerHTML = data.user.bio
 
                 // If has follower load them
                 if (data.follow_details['them-me'].length != 0) {
@@ -126,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     loadFollowing(data.follow_details['me-them'])
                 }
                 // Change the follow btn text
-                if (data.isFollowing.length != 0) {
+                if (data.isFollowing !== 'ME') {
                     const isFollowingDiv = document.querySelector('#follow')
                     if (data.isFollowing) {
                         isFollowingDiv.innerText = 'Unfollow'

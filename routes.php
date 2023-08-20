@@ -2,9 +2,11 @@
 
 // PAGES
 if (isset($_SESSION['auth'])) {
+    get('/', '/view/welcome');
+    
+    get('/profile/edit', '/view/user/edit');
     get('/profile', '/view/user/profile');
     get('/profile/$userID', '/view/user/profile');
-
 
     get('/logout', '/core/logout');
 } else {
