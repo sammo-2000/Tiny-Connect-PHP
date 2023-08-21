@@ -2,7 +2,7 @@
 
 // PAGES
 if (isset($_SESSION['auth'])) {
-    get('/', '/view/welcome');
+    get('/', '/view/home');
 
     get('/profile/edit', '/view/user/edit');
     get('/profile', '/view/user/profile');
