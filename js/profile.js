@@ -107,7 +107,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     // END LOADING FOLLOWING ..........................................................
 
     // START LOADING BLOG ........................................................
+    function loadBlog(blog) {
+        console.log(blog)
+        const blogSection = document.querySelector('section.blog')
+        blogSection.innerHTML = ''
+        const blogCards = document.createElement("div");
+        blogCards.classList.add('blog-cards')
+        blog.forEach(element => {
+            const newDiv = document.createElement("a");
+            newDiv.classList.add('blog-card');
+            newDiv.classList.add('box');
+            newDiv.href = `/blog/${element.blogID}`;
 
+            const truncatedTitle = element.title.length > 100 ? `${element.title.substring(0, 100)}...` : element.title;
+            const truncatedBody = element.body.length > 200 ? `${element.body.substring(0, 200)}...` : element.body;
+
+            newDiv.innerHTML = `
+                <p class="title">${truncatedTitle}</p>
+                <p class="body">${truncatedBody}</p>
+            `;
+
+            blogCards.appendChild(newDiv);
+        });
+        blogSection.appendChild(blogCards);
+    }
     // END LOADING BLOG ..........................................................
 
     // START LOADING POST ........................................................
@@ -178,6 +201,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // If has following load them
                 if (data.follow_details['me-them'].length != 0) {
                     loadFollowing(data.follow_details['me-them'])
+                }
+                // If has blogs
+                if (data.blogs.length != 0) {
+                    loadBlog(data.blogs)
                 }
                 // If has posts
                 if (data.posts.length != 0) {

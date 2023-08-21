@@ -179,3 +179,27 @@ img {
     height: 100px;
     border-radius: 250px;
 }
+
+.blog-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.blog-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.blog-card .title {
+    font-size: 1.3rem;
+    text-decoration: underline;
+}
+
+.blog-card .body {
+    
+}

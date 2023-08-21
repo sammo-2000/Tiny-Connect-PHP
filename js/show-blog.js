@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const postID = ID()
+    const blogID = ID()
 
     const UserIDEl = document.querySelector('#userIDs');
     const userID = UserIDEl.innerText.trim().replace(/%20/g, '');
 
-    const postSection = document.getElementById('post')
+    const blogSection = document.getElementById('blog')
     const errorEl = document.getElementById('error')
 
     const btn = document.querySelector('button.send')
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const DataToSend = {
                 input: input.value,
-                postID: postID
+                blogID: blogID
             };
 
-            const response = await fetch('/api/post-comment', {
+            const response = await fetch('/api/blog-comment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,17 +51,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Load the data
     async function getData() {
         try {
-            const response = await fetch(`/api/post/${postID}`);
+            const response = await fetch(`/api/blog/${blogID}`);
 
             const data = await response.json()
 
-            if (data.post) {
+            if (data.blog) {
+                console.log(data)
                 document.querySelector('.post-detail a').innerText = data.uploaderName
-                document.querySelector('.post-detail a').href = `/profile/${data.post.uploaderID}`
-                document.querySelector('h1').innerText = data.post.caption
-                document.querySelector('.post-detail span').innerText = setTime(data.post.uploadTime)
-                document.querySelector('#post img').src = data.post.image
-                if (data.post.uploaderID == userID) {
+                document.querySelector('.post-detail a').href = `/profile/${data.blog.uploaderID}`
+                document.querySelector('h1').innerText = data.blog.title
+                document.querySelector('.post-detail span').innerText = setTime(data.blog.uploadTime)
+                document.querySelector('.blog-body').innerText = data.blog.body
+                if (data.blog.uploaderID == userID) {
                     const newButton = document.createElement('button')
                     newButton.classList.add('btn')
                     newButton.classList.add('btn-white')
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     document.querySelector('.post-detail span').appendChild(newButton)
                     newButton.addEventListener('click', async () => {
                         try {
-                            const response = await fetch(`/api/post/${postID}`, {
+                            const response = await fetch(`/api/blog/${blogID}`, {
                                 method: 'DELETE'
                             })
                             const data = await response.json()
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         button.addEventListener('click', async () => {
                             const commentID = button.getAttribute("data-section")
                             try {
-                                const response = await fetch(`/api/post-comment/${commentID}`, {
+                                const response = await fetch(`/api/blog-comment/${commentID}`, {
                                     method: 'DELETE'
                                 });
                                 const data = await response.json()
@@ -146,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
 
             } else {
-                postSection.innerHTML = `<div class="no-found">No post found</div>`
+                blogSection.innerHTML = `<div class="no-found">No blog found</div>`
             }
 
         } catch (error) {

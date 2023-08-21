@@ -1,20 +1,20 @@
 <?php
-$title = 'Post';
-$script = 'show-post';
+$title = 'Blog';
+$script = 'show-blog';
 require_once __DIR__ . '/../include/head.php';
-isset($postID) ? User($postID) : User()
+isset($blogID) ? User($blogID) : User()
     ?>
 <div id="userIDs" style="display: none">
     <?= $_SESSION['userID'] ?>
 </div>
-<div id="post">
+<div id="blog">
     <div class="box">
         <div class="post-detail">
             <a></a>
             <span></span>
         </div>
         <h1></h1>
-        <img class="box">
+        <p class="blog-body"></p>
     </div>
     <div class="box show-comments">
         <div class="add-comment">

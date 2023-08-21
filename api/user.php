@@ -89,10 +89,9 @@ if ($method === 'PATCH') {
         finfo_close($finfo);
 
         if (strpos($mime_type, 'image/') === 0) {
-            // Image is of valid type
+            $image_size_in_bytes = strlen($image) * 3 / 4; // Convert base64 size to bytes
             $max_file_size = 5 * 1024 * 1024; // 5 MB in bytes
-
-            if (strlen($image_data) <= $max_file_size) {
+            if ($image_size_in_bytes <= $max_file_size) {
                 // Image size is within the limit
 
                 // Convert to PNG

@@ -10,6 +10,18 @@ header('Content-Type: application/json');
 // Check the request method
 $method = $_SERVER['REQUEST_METHOD'];
 
+if ($method === 'DELETE') {
+    $data = $postDetails = $Post->delete($postID);
+    if ($data) {
+        http_response_code(200);
+        echo json_encode(['error' => false, 'message' => 'Post deleted']);
+        exit();
+    }
+    http_response_code(400);
+    echo json_encode(['error' => false, 'message' => 'Post not deleted']);
+    exit();
+}
+
 if ($method === 'GET') {
     $postDetails = $Post->read($postID);
     if (empty($postDetails)) {
@@ -67,10 +79,9 @@ if ($method === 'POST') {
     finfo_close($finfo);
 
     if (strpos($mime_type, 'image/') === 0) {
-        // Image is of valid type
+        $image_size_in_bytes = strlen($image) * 3 / 4; // Convert base64 size to bytes
         $max_file_size = 5 * 1024 * 1024; // 5 MB in bytes
-
-        if (strlen($image_data) <= $max_file_size) {
+        if ($image_size_in_bytes <= $max_file_size) {
             // Convert to PNG
             $image_data = imagecreatefromstring($image_data);
             $png_image_path = 'post-pictures/' . uniqid() . bin2hex(random_bytes(8)) . '.png';

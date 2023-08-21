@@ -1,32 +1,7 @@
-Error: [8192] ltrim(): Passing null to parameter #1 ($string) of type string is deprecated - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/user.php - 104
-Error: [2] imagecreatefromstring(): One parameter to a memory allocation multiplication is negative or zero, failing operation gracefully
- - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/user.php - 99
-Error: [2] imagecreatefromstring(): Passed data is not in &quot;WBMP&quot; format - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/user.php - 99
-Error: [2] imagecreatefromstring(): Couldn't create GD Image Stream out of Data - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/user.php - 99
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 20
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 20
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 20
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 20
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 20
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Array to string conversion - /Applications/XAMPP/xamppfiles/htdocs/media_2/core/Dbh.php - 33
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 20
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post.php - 21
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post-Comment.php - 29
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post-Comment.php - 29
-Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Post-Comment.php - 29
+Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Blog.php - 20
+Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Blog.php - 21
+Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Blog.php - 20
+Error: [2] Trying to access array offset on value of type bool - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Blog.php - 21
+Error: [2] Undefined variable $commentID - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/blog-comment.php - 14
+Error: [2] Undefined variable $commentID - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/blog-comment.php - 14
+Error: [2] Undefined variable $commentID - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/blog-comment.php - 14

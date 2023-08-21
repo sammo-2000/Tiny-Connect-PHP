@@ -1,5 +1,6 @@
 <?php
 $title = 'Blog';
+$script = 'create-blog';
 require_once __DIR__ . '/../include/head.php';
 isset($userID) ? User($userID) : User()
     ?>
@@ -14,6 +15,10 @@ isset($userID) ? User($userID) : User()
     <span id="error"></span>
 
     <button class="btn">Create<i class="fa-solid fa-plus"></i></button>
+
+    <span class="loading-icon">
+        <i class="fa-solid fa-spinner fa-spin"></i>
+    </span>
 
     <a class="btn btn-white" href="/post/create">Create Post<i class="fa-solid fa-pen"></i></a>
 

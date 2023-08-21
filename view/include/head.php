@@ -9,6 +9,8 @@
         <?= $title ?>
     </title>
 
+    <link rel="icon" type="image/png" href="/images/logo-black.png">
+
     <script src="https://kit.fontawesome.com/bc0bae8e00.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/css/reset.css">
@@ -40,7 +42,9 @@
                                 class="fa-solid fa-pen"></i>New</a></li>
                     <li <?= active('/chat') ?>><a href="/chat"><i class="fa-solid fa-comment"></i>Chat</a></li>
                     <li <?= active('/profile') ?>><a href="/profile"><i class="fa-solid fa-user"></i>Profile</a></li>
-                    <li <?= active('/admin') ?>><a href="/admin"><i class="fa-solid fa-unlock"></i>Admin</a></li>
+                    <?php if ($_SESSION['role'] !== 'Member'): ?>
+                        <li <?= active('/admin') ?>><a href="/admin"><i class="fa-solid fa-unlock"></i>Admin</a></li>
+                    <?php endif; ?>
                     <li><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
                 <?php } else { ?>
                     <li <?= active('/') ?>><a href="/"><i class="fa-solid fa-house"></i>Home</a></li>

@@ -226,13 +226,13 @@ textarea:hover {
     height: auto;
 }
 
-#post {
+#post, #blog {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-#post>div {
+#post>div, #blog>div {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -248,6 +248,9 @@ textarea:hover {
 .post-detail span {
     color: var(--fade);
     font-size: 0.9rem;
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 #post img.box {
@@ -272,3 +275,7 @@ textarea:hover {
     transform: none;
 }
 
+#blog .blog-body {
+    font-size: 1;
+    
+}
