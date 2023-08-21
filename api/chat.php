@@ -11,8 +11,13 @@ header('Content-Type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method === 'GET') {
+    if (isset($userID)) {
+        http_response_code(200);
+        echo json_encode($Chat->read($userID));
+        exit();
+    }
     http_response_code(200);
-    echo json_encode($Chat->read($userID));
+    echo json_encode($Chat->getAll());
     exit();
 }
 

@@ -27,8 +27,7 @@ class Chat extends Dbh
         // Implement your read logic here
         $query = 'SELECT * FROM `chat` WHERE (`senderID` = ? AND `receiverID` = ?) OR (`senderID` = ? AND `receiverID` = ?) LIMIT 500';
         $result = $this->fetchAll($query, [$id, $_SESSION['userID'], $_SESSION['userID'], $id]);
-        if (empty($result))
-        {
+        if (empty($result)) {
             return false;
         }
         return $result;
@@ -47,6 +46,22 @@ class Chat extends Dbh
     public function getAll()
     {
         // Implement your get all logic here
+        $user = $_SESSION['userID'];
+        $query = 'SELECT * FROM `chat-recent` WHERE `senderID` = ? OR `receiverID` = ? ORDER BY `date` DESC';
+        $results = $this->fetchAll($query, [$user, $user]);
+        if (empty($results)) {
+            return false;
+        }
+        $chatWith = [];
+        $query = 'SELECT `userID`, `name`, `image` FROM `user` WHERE `userID` = ?';
+        foreach ($results as $result) {
+            if ($result['receiverID'] == $user) {
+                $chatWith[] = $this->fetch($query, [$result['senderID']]);
+            } else {
+                $chatWith[] = $this->fetch($query, [$result['receiverID']]);
+            }
+        }
+        return $chatWith;
     }
 
 }
