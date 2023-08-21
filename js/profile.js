@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const userID = User();
+    const userID = ID();
     const profile = document.getElementById('profile')
     const followBtn = document.querySelector('button')
     // Profile info
@@ -12,6 +12,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     const following = document.getElementById('following')
     const Followers = document.getElementById('Followers')
     const bio = document.querySelector('.bio')
+    let reSizeAble = false
+
+    window.addEventListener('resize', () => {
+        if (reSizeAble) {
+            reSize();
+            console.log('yes')
+        }
+    })
+
+    // START OF RESIZE ................................................................
+    // Resize the image
+    function reSize() {
+        const postCardSingle = document.querySelectorAll('.post-card');
+        const width = postCardSingle[0].clientWidth;
+
+        postCardSingle.forEach(element => {
+            const image = element.querySelector('img');
+            image.style.width = width + 'px';
+            image.style.height = width + 'px';
+            element.style.width = width + 'px';
+            element.style.height = width + 'px';
+            element.style.maxWidth = width + 'px';
+            element.style.maxHeight = width + 'px';
+        });
+    }
+    // END OF RESIZE ..................................................................
 
     // START OF TAB SWITCH ............................................................
     const tabs = document.querySelectorAll(".tab");
@@ -80,6 +106,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     // END LOADING FOLLOWING ..........................................................
 
+    // START LOADING BLOG ........................................................
+
+    // END LOADING BLOG ..........................................................
+
+    // START LOADING POST ........................................................
+    function loadPost(post) {
+        const postSection = document.querySelector('section.post')
+        postSection.innerHTML = ''
+        const postCards = document.createElement("div");
+        postCards.classList.add('post-cards')
+        console.log(post)
+        post.forEach(element => {
+            const newDiv = document.createElement("a");
+            newDiv.classList.add('post-card')
+            newDiv.classList.add('box')
+            newDiv.href = `/post/${element.postID}`
+            newDiv.innerHTML = `
+                    <img src="${element.image}">
+                `
+            postCards.appendChild(newDiv);
+        });
+        postSection.appendChild(postCards);
+        reSizeAble = true
+        reSize();
+    }
+    // END LOADING POST ..........................................................
+
     // START OF FOLLOWING THE USER ....................................................
     if (followBtn) {
         followBtn.addEventListener('click', async () => {
@@ -125,6 +178,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // If has following load them
                 if (data.follow_details['me-them'].length != 0) {
                     loadFollowing(data.follow_details['me-them'])
+                }
+                // If has posts
+                if (data.posts.length != 0) {
+                    loadPost(data.posts)
                 }
                 // Change the follow btn text
                 if (data.isFollowing !== 'ME') {

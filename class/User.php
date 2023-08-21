@@ -23,8 +23,8 @@ class User extends Dbh
             exit();
         }
 
-        $posts = $this->fetchAll('SELECT * FROM `post` WHERE `uploaderID` = ?', [$id]);
-        $blogs = $this->fetchAll('SELECT * FROM `blog` WHERE `uploaderID` = ?', [$id]);
+        $posts = $this->fetchAll('SELECT * FROM `post` WHERE `uploaderID` = ? ORDER BY `postID` DESC', [$id]);
+        $blogs = $this->fetchAll('SELECT * FROM `blog` WHERE `uploaderID` = ? ORDER BY `blogID` DESC', [$id]);
 
         $follower = $this->fetch('SELECT COUNT(*) AS `follower` FROM `follow` WHERE `followingID` = ?', [$id]);
         $followerCount = $follower ? $follower['follower'] : 0;
@@ -59,8 +59,7 @@ class User extends Dbh
             $isFollowing = true;
         }
 
-        if ($id == $_SESSION['userID'])
-        {
+        if ($id == $_SESSION['userID']) {
             $isFollowing = 'ME';
         }
 

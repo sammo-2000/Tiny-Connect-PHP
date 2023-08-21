@@ -20,7 +20,7 @@ isset($userID) ? User($userID) : User()
                 if (isset($userID) && $userID != $_SESSION['userID']) {
                     echo '<button class="btn" id="follow"></button>';
                 } else {
-                    echo '<a href="/profile/edit" class="btn fit">Edit</a>';
+                    echo '<a href="/profile/edit" class="btn fit">Edit<i class="fa-solid fa-pen-to-square"></i></a>';
                 }
                 ?>
             </div>

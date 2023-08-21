@@ -62,6 +62,11 @@ if ($method === 'PATCH') {
             echo json_encode(['success' => false, 'message' => 'Name cannot be shorter than 3 characters']);
             exit();
         }
+        if (empty($name)) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'Name cannot be shorter than 3 characters']);
+            exit();
+        }
         $_SESSION['name'] = $name;
         $User->updateName($_SESSION['userID'], $name);
     }

@@ -9,7 +9,7 @@ isset($userID) ? User($userID) : User()
     <h1>Edit Profile</h1>
 
     <label for="image"><img class="box"></label>
-    <input type="file" id="image" name="image">
+    <input type="file" id="image" name="image" accept=".jpeg, .jpg, .png">
 
     <input type="text" id="name" name="name" placeholder="Name">
 
@@ -17,9 +17,9 @@ isset($userID) ? User($userID) : User()
 
     <span id="error"></span>
 
-    <button class="btn update">Update</button>
+    <button class="btn update">Update<i class="fa-solid fa-paper-plane"></i></button>
 
-    <button class="btn delete btn-white">Delete Account</button>
+    <button class="btn delete btn-white">Delete Account<i class="fa-solid fa-trash"></i></button>
 
     <span class="loading-icon">
         <i class="fa-solid fa-spinner fa-spin"></i>

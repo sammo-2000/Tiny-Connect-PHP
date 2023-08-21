@@ -36,6 +36,8 @@ body {
 main {
     flex-grow: 1;
     padding-block: 10px;
+    width: clamp(250px, 98%, 1200px);
+    margin: auto;
 }
 
 header,

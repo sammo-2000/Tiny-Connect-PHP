@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // Get all the elements
-    const userID = User();
+    const userID = ID();
     const labelImg = document.querySelector('label img');
     const imageEl = document.querySelector('input[name="image"]');
     const nameEl = document.querySelector('input[name="name"]');
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert('Please leave this tap open until redirected to successfully delete your profile')
         loadingEl.style.display = 'block'
         btnUpdate.style.display = 'none'
+        btnDelete.style.display = 'none'
         if (confirmed) {
             const response = await fetch('/api/user', {
                 method: 'DELETE'
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         event.preventDefault();
         loadingEl.style.display = 'block'
         btnUpdate.style.display = 'none'
+        btnDelete.style.display = 'none'
         try {
             const DataToSend = {
                 image: imageBase64,
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             loadingEl.style.display = 'none'
             btnUpdate.style.display = 'block'
+            btnDelete.style.display = 'block'
 
             if (data.success) {
                 window.location.href = '/profile'

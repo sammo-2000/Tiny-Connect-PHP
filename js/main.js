@@ -1,4 +1,4 @@
-function User() {
+function ID() {
   const userIDElement = document.querySelector('#userID');
   return userID = userIDElement.innerText.trim().replace(/%20/g, '');
 }

@@ -3,6 +3,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 999;
+    border-bottom: 1px solid var(--fade);
 }
 
 header :is(div, ul.list) {
@@ -109,10 +110,9 @@ textarea:hover {
 
 .profile-details {
     flex-grow: 1;
-    max-width: calc(100% - 220px);
 }
 
-.profile-details > p {
+.profile-details>p {
     padding-top: 20px;
 }
 
@@ -161,7 +161,8 @@ textarea:hover {
     padding-top: 10px;
 }
 
-.update-profile label {
+.update-profile label,
+.create-post label {
     transition: var(--transition);
     cursor: pointer;
     width: 100%;
@@ -170,7 +171,8 @@ textarea:hover {
     align-items: center;
 }
 
-.update-profile label:hover {
+.update-profile label:hover,
+.create-post label:hover {
     filter: brightness(0.8);
 }
 
@@ -184,3 +186,89 @@ textarea:hover {
 .update-profile input[name="image"] {
     display: none;
 }
+
+.create-post img {
+    width: 250px;
+    height: 250px;
+    padding: 0;
+}
+
+.create-post input[name="image"] {
+    display: none;
+}
+
+.post-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.post-card {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    min-width: 250px;
+    max-width: 500px;
+    width: calc(33.33% - 15px);
+    transition: var(--transition);
+}
+
+.post-card:hover {
+    transform: scale(1.1);
+}
+
+.post-card img {
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    max-width: 100%;
+    height: auto;
+}
+
+#post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#post>div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-detail {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.post-detail span {
+    color: var(--fade);
+    font-size: 0.9rem;
+}
+
+#post img.box {
+    width: 80vw;
+    height: 80vw;
+    max-width: 500px;
+    max-height: 500px;
+    margin: auto;
+    padding: 0;
+}
+
+.add-comment {
+    display: flex;
+    width: 100%;
+}
+
+.add-comment input {
+    width: 100%;
+}
+
+.add-comment button:hover {
+    transform: none;
+}
+
