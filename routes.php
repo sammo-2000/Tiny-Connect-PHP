@@ -14,6 +14,9 @@ if (isset($_SESSION['auth'])) {
     get('/post/create', '/view/post/create');
     get('/post/$postID', '/view/post/show');
 
+    get('/chat', '/view/chat/chat');
+    get('/chat/$userID', '/view/chat/chat-single');
+
     get('/logout', '/core/logout');
 } else {
     get('/', '/view/welcome');
@@ -42,6 +45,10 @@ if (isset($_SESSION['auth'])) {
     any('/api/blog/$blogID', '/api/blog');
     any('/api/blog-comment', '/api/blog-comment');
     any('/api/blog-comment/$commentID', '/api/blog-comment');
+
+    // Chat
+    any('/api/chat', '/api/chat');
+    any('/api/chat/$userID', '/api/chat');
 } else {
     any('/api/signup', '/api/signup');
     any('/api/login', '/api/login');

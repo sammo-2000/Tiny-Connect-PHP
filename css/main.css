@@ -97,6 +97,11 @@ textarea:hover {
     background-image: var(--white-mash);
 }
 
+.profile-intract {
+    display: flex;
+    gap: 5px;
+}
+
 .profile-top .img {
     margin: auto;
 }
@@ -226,13 +231,15 @@ textarea:hover {
     height: auto;
 }
 
-#post, #blog {
+#post,
+#blog {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-#post>div, #blog>div {
+#post>div,
+#blog>div {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -277,5 +284,101 @@ textarea:hover {
 
 #blog .blog-body {
     font-size: 1;
-    
+
+}
+
+#chat {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat .info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#chat .info div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#chat .info img {
+    height: 70px;
+    width: 70px;
+    border-radius: 250px;
+}
+
+#chat .info i {
+    font-size: 2rem;
+    transition: var(--transition);
+}
+
+#chat .info i:hover {
+    color: var(--theme-light);
+}
+
+#chat .chat {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+#chat .chat>div {
+    max-width: 70vw;
+    width: fit-content;
+    padding: 5px 20px;
+    background-color: var(--theme-light);
+    background-image: var(--mash);
+    color: white;
+}
+
+#chat .chat>div span {
+    font-size: 0.9rem;
+    font-family: var(--font);
+}
+
+#chat .chat .me {
+    margin-left: auto;
+}
+
+#chat .chat>span {
+    border-bottom: 1px solid var(--fade);
+    color: #383838;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+#chat .input {
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#chat .input div {
+    padding: 5px;
+    margin: 0;
+    display: flex;
+}
+
+#chat .input input {
+    width: 100%;
+}
+
+#chat .input button:hover {
+    transform: none;
 }

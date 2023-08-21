@@ -5,3 +5,13 @@ Error: [2] Trying to access array offset on value of type bool - /Applications/X
 Error: [2] Undefined variable $commentID - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/blog-comment.php - 14
 Error: [2] Undefined variable $commentID - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/blog-comment.php - 14
 Error: [2] Undefined variable $commentID - /Applications/XAMPP/xamppfiles/htdocs/media_2/api/blog-comment.php - 14
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19
+Error: [2] Undefined array key "recentID" - /Applications/XAMPP/xamppfiles/htdocs/media_2/class/Chat.php - 19

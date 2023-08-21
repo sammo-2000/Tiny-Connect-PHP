@@ -16,13 +16,16 @@ isset($userID) ? User($userID) : User()
                     <p id="name"></p>
                     <span id="join_date"></span>
                 </div>
-                <?php
-                if (isset($userID) && $userID != $_SESSION['userID']) {
-                    echo '<button class="btn" id="follow"></button>';
-                } else {
-                    echo '<a href="/profile/edit" class="btn fit">Edit<i class="fa-solid fa-pen-to-square"></i></a>';
-                }
-                ?>
+                <div class="profile-intract">
+                    <?php
+                    if (isset($userID) && $userID != $_SESSION['userID']) {
+                        echo "<button class=\"btn\" id=\"follow\"></button>
+                              <a href=\"/chat/$userID\" class=\"btn btn-white fit\">Chat<i class=\"fa-solid fa-comment\"></i></a>";
+                    } else {
+                        echo '<a href="/profile/edit" class="btn fit">Edit<i class="fa-solid fa-pen-to-square"></i></a>';
+                    }
+                    ?>
+                </div>
             </div>
             <div class="profile-detail-bottom">
                 <div>
