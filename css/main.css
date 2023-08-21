@@ -6,15 +6,20 @@
     flex-direction: column;
     gap: 20px;
     border-bottom: 1px solid var(--fade);
+    transition: var(--transition);
 }
 
-.about-website > p {
+.about-website section:hover {
+    scale: 1.1;
+}
+
+.about-website>p {
     padding-block: 30px;
     font-size: 1.4rem;
     font-family: var(--font);
 }
 
-.about-website > p > span {
+.about-website>p>span {
     font-size: 1.6rem;
     color: var(--theme);
 }
@@ -390,16 +395,31 @@ textarea:hover {
     gap: 5px;
 }
 
-#chat .input div {
+#chat .input div,
+#search .input {
     padding: 5px;
     margin: 0;
     display: flex;
 }
 
-#chat .input input {
+#search .input {
+    flex-direction: row;
+    gap: 0px;
     width: 100%;
 }
 
-#chat .input button:hover {
+#chat .input input,
+#search .input input {
+    width: 100%;
+}
+
+#chat .input button:hover,
+#search .input button:hover {
     transform: none;
+}
+
+#search .search {
+    padding-top: 15px;
+    margin-top: 10px;
+    border-top: 1px solid var(--fade);
 }

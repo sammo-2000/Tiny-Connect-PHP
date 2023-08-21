@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json()
 
         document.querySelector('#chat a').innerText = data.user.name
+        document.querySelector('#chat a').href = '/profile/' + data.user.userID
         document.querySelector('#chat img').src = setImage(data.user.image)
 
         getChat();
