@@ -18,10 +18,10 @@ require_once __DIR__ . '/include/head.php';
 
     <input type="password" id="password_repeat" name="password_repeat" placeholder="Password Repeat">
 
-    <div>
+    <!-- <div>
         <span><a href="/terms-and-conditions">Term & Conditions</a></span>
         <input type="checkbox" name="terms" required>
-    </div>
+    </div> -->
 
     <span id="error"></span>
 

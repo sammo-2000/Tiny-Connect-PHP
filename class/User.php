@@ -2,6 +2,9 @@
 namespace User;
 
 use Model\Dbh;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class User extends Dbh
 {
@@ -88,6 +91,10 @@ class User extends Dbh
         $user = $this->fetch('SELECT * FROM `user` WHERE `userID` = ?', [$id]);
         unlink($user['image']);
         $this->db('DELETE FROM `post` WHERE `uploaderID` = ?', [$id]);
+        $this->db('DELETE FROM `blog-comment` WHERE `userID` = ?', [$id]);
+        $this->db('DELETE FROM `chat` WHERE `senderID` = ? OR `receiverID` = ?', [$id, $id]);
+        $this->db('SELECT * FROM `chat-recent` WHERE `senderID` = ? OR `receiverID` = ?', [$id, $id]);
+        $this->db('DELETE FROM `post-comment` WHERE `userID` = ?', [$id]);
         $this->db('DELETE FROM `blog` WHERE `uploaderID` = ?', [$id]);
         $this->db('DELETE FROM `follow` WHERE `followID` = ? OR `followingID` = ?', [$id, $id]);
         $this->db('DELETE FROM `user` WHERE `userID` = ?', [$id]);
@@ -152,5 +159,110 @@ class User extends Dbh
     {
         $result = $this->fetch('SELECT `image` FROM `user` WHERE `userID` = ?', [$_SESSION['userID']]);
         return $result['image'];
+    }
+
+    // Password reset 
+    public function resetPassword(string $email, string $password, string $OTP)
+    {
+        $result = $this->fetch('SELECT * FROM `password` WHERE `email` = ?', [$email]);
+
+        if ($OTP == $result['OTP']) {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $this->db('UPDATE `user` SET `password` = ? WHERE `email` = ?', [$password, $email]);
+            $this->db('DELETE FROM `password` WHERE `email` = ?', [$email]);
+            return [
+                'code' => '200',
+                'response' => [
+                    'success' => true,
+                    'message' => 'Pasword reset successful, you can now login'
+                ]
+            ];
+        }
+        $this->db('DELETE FROM `password` WHERE `email` = ?', [$email]);
+        $this->sendEmail($email);
+        return [
+            'code' => '400',
+            'response' => [
+                'success' => false,
+                'message' => 'Sorry, OTP incorrect - new one sent to your email now'
+            ]
+        ];
+    }
+
+    public function sendEmail(string $email)
+    {
+        $this->db('DELETE FROM `password` WHERE `time` <= NOW() - INTERVAL 30 MINUTE', []);
+        $result = $this->fetch('SELECT * FROM `password` WHERE `email` = ?', [$email]);
+        if (empty($result)) {
+            $OTP = rand(100000, 999999);
+            $this->db('INSERT INTO `password`(`email`, `OTP`) VALUES (?, ?)', [$email, $OTP]);
+            return $this->email($email, $OTP);
+        } else {
+            return ['success' => true, 'message' => 'Email has already been sent, type your OTP and new password to reset it'];
+        }
+    }
+
+    private function email($email, $OTP)
+    {
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = $_ENV['EMAIL_LOGIN'];
+            $mail->Password = $_ENV['EMAIL_PASS'];
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
+
+            $mail->setFrom('otp@tinyconnect.org', $_ENV['APP_NAME']);
+            $mail->addAddress($email, $_ENV['APP_NAME'] . ' user');
+            $mail->addReplyTo('support@tinyconnect.com', $_ENV['APP_NAME'] . ' Support Team');
+
+            $mail->isHTML(true);
+            $mail->Subject = $_ENV['APP_NAME'] . ' One Time Password OTP';
+            $mail->Body = '
+                <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+                        <div style="text-align: center;">
+                            <h1 style="padding: 15px;">' . $_ENV['APP_NAME'] . '</h1>
+                        </div>
+                        <div style="margin-top: 20px; padding: 15px; background-color: #f5f5f5; border-radius: 5px;">
+                            <p>Dear User,</p>
+                            <p>Thank you for using ' . $_ENV['APP_NAME'] . '!</p>
+                            <p>To ensure the utmost security for your account, we have implemented a dynamic One-Time Password (OTP) system. Please use the following OTP for your password reset</p>
+                            <p style="font-size: 24px; font-weight: bold;">Your One-Time Password: ' . $OTP . '</p>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <p>Here\'s how you can reset your password:</p>
+                            <ol>
+                            <li>Go to https://tinyconnect.com/password-reset.</li>
+                            <li>On the password reset page, enter your registered email address.</li>
+                            <li>Provided OTP & New Password.</li>
+                            <li>Click on the "Reset" button.</li>
+                            </ol>
+                            <p>Remember, this One-Time Password will change after 3 reset attempt or successful reset, providing an extra layer of protection for your account.</p>
+                            <p>This OTP is valid for next 30 mintues only, any attempt of reset after will result in new OTP to be sent</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="https://tinyconnect.com/password-reset" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #007BFF; color: #ffffff; text-decoration: none; border-radius: 5px;">Login Now</a>
+                        </div>
+                        <div style="margin-top: 30px; text-align: center;">
+                            <p>If you did not attempt to reset or have any concerns about your account\'s security, please contact our support team immediately at:</p>
+                            <p>Email: support@tinyconnect.com</p>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <p>Thank you for using ' . $_ENV['APP_NAME'] . '. We\'re committed to ensuring a safe and enjoyable experience for all our users.</p>
+                        </div>
+                    </div>
+                </div>
+            ';
+            $mail->AltBody = 'Your OTP is: ' . $OTP;
+
+            $mail->send();
+            return ['success' => true, 'message' => 'Email with OTP sent to ' . $email];
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => 'There was an error sending your password'];
+        }
     }
 }

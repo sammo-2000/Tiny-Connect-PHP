@@ -18,6 +18,52 @@ if ($method === 'DELETE') {
     exit();
 }
 
+if ($method === 'POST') {
+    // Receive JSON data from the request body
+    $data = json_decode(file_get_contents('php://input'), true);
+    $email = isset($data['email']) ? htmlspecialchars(trim($data['email'])) : '';
+    $OTP = isset($data['OTP']) ? htmlspecialchars(trim($data['OTP'])) : '';
+    $password = isset($data['password']) ? htmlspecialchars(trim($data['password'])) : '';
+
+    if (empty($email)) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Email is required']);
+        exit();
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) >= 255) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Email is invalid']);
+        exit();
+    }
+
+    $userDetail = $User->getUserByEmail($email);
+
+    if (empty($userDetail)) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'No user found with given email']);
+        exit();
+    }
+
+    if (empty($OTP) && empty($password)) {
+        // User sent email only
+        $result = $User->sendEmail($email);
+        http_response_code(400);
+        echo json_encode($result);
+        exit();
+    }
+    if (empty($OTP) || empty($password)) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Please provide OTP & new password']);
+        exit();
+    } else {
+        $result = $User->resetPassword($email, $password, $OTP);
+        http_response_code($result['code']);
+        echo json_encode($result['response']);
+        exit();
+    }
+}
+
 if ($method === 'GET') {
     $userID = isset($userID) ? trim($userID) : null;
 

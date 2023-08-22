@@ -24,6 +24,7 @@ if (isset($_SESSION['auth'])) {
     get('/', '/view/welcome');
     get('/login', '/view/login');
     get('/signup', '/view/signup');
+    get('/password-reset', '/view/user/password-reset');
 }
 
 
@@ -61,6 +62,7 @@ if (isset($_SESSION['auth'])) {
 } else {
     any('/api/signup', '/api/signup');
     any('/api/login', '/api/login');
+    any('/api/user', '/api/user');
 }
 
 
