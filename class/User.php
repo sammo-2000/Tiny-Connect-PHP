@@ -217,7 +217,7 @@ class User extends Dbh
 
             $mail->setFrom('otp@tinyconnect.org', $_ENV['APP_NAME']);
             $mail->addAddress($email, $_ENV['APP_NAME'] . ' user');
-            $mail->addReplyTo('support@tinyconnect.com', $_ENV['APP_NAME'] . ' Support Team');
+            $mail->addReplyTo('support@tinyconnect.org', $_ENV['APP_NAME'] . ' Support Team');
 
             $mail->isHTML(true);
             $mail->Subject = $_ENV['APP_NAME'] . ' One Time Password OTP';
@@ -236,7 +236,7 @@ class User extends Dbh
                         <div style="margin-top: 20px;">
                             <p>Here\'s how you can reset your password:</p>
                             <ol>
-                            <li>Go to https://tinyconnect.com/password-reset.</li>
+                            <li>Go to https://tinyconnect.org/password-reset.</li>
                             <li>On the password reset page, enter your registered email address.</li>
                             <li>Provided OTP & New Password.</li>
                             <li>Click on the "Reset" button.</li>
@@ -245,11 +245,11 @@ class User extends Dbh
                             <p>This OTP is valid for next 30 mintues only, any attempt of reset after will result in new OTP to be sent</p>
                         </div>
                         <div style="text-align: center;">
-                            <a href="https://tinyconnect.com/password-reset" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #007BFF; color: #ffffff; text-decoration: none; border-radius: 5px;">Login Now</a>
+                            <a href="https://tinyconnect.org/password-reset" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #007BFF; color: #ffffff; text-decoration: none; border-radius: 5px;">Login Now</a>
                         </div>
                         <div style="margin-top: 30px; text-align: center;">
                             <p>If you did not attempt to reset or have any concerns about your account\'s security, please contact our support team immediately at:</p>
-                            <p>Email: support@tinyconnect.com</p>
+                            <p>Email: support@tinyconnect.org</p>
                         </div>
                         <div style="text-align: center; margin-top: 20px;">
                             <p>Thank you for using ' . $_ENV['APP_NAME'] . '. We\'re committed to ensuring a safe and enjoyable experience for all our users.</p>

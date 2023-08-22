@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     // Create the chat
                     newDiv.innerHTML = `
                     <span>${getTime(element.time)}</span>
-                    <p>${element.chat}</p>
+                    <p>${HTML(element.chat)}</p>
                 `
                     // Add the chat to show the user
                     chatSection.appendChild(newDiv)

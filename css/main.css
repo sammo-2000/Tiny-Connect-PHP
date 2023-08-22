@@ -56,6 +56,14 @@ header a {
     gap: 5px;
 }
 
+footer {
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-family: var(--font);
+}
+
 form {
     width: clamp(250px, 100%, 400px);
     margin: auto;
@@ -447,4 +455,3 @@ textarea:hover {
 .home-tabs section button {
     margin: auto;
 }
-

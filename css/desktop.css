@@ -1,3 +1,11 @@
 .profile-details {
     max-width: calc(100% - 220px);
 }
+
+.mobile-search {
+    display: none;
+}
+
+.mobile-only {
+    display: none;
+}

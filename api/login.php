@@ -38,7 +38,7 @@ if ($method === 'POST') {
 
     if (empty($userDetail)) {
         http_response_code(400);
-        echo json_encode(['success' => 'error', 'message' => 'No user found, please sign up first']);
+        echo json_encode(['success' => 'error', 'message' => 'Credential are incorrect']);
         exit();
     }
 

@@ -97,7 +97,7 @@ if ($method === 'PATCH') {
     $name = isset($data['name']) ? htmlspecialchars(trim($data['name'])) : '';
     $bio = isset($data['bio']) ? htmlspecialchars(trim($data['bio'])) : '';
 
-    if (!empty($name)) {
+    if (!empty($name) || $_SESSION['name'] === null) {
         if (strlen($name) > 40) {
             http_response_code(400);
             echo json_encode(['success' => false, 'message' => 'Name cannot be longer than 40 characters']);

@@ -252,6 +252,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (loadedPostIDsFollowing.length === 0 && data.postInfo.length !== 0) {
                 postSectionFollowing.innerHTML = ''
                 const postCardsFollowing = document.createElement("div");
+                postCardsFollowing.classList.add('post-cards')
                 postCardsFollowing.classList.add('post-cards-following')
                 postSectionFollowing.appendChild(postCardsFollowing);
             }

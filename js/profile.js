@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.addEventListener('resize', () => {
         if (reSizeAble) {
             reSize();
-            console.log('yes')
         }
     })
 
@@ -108,7 +107,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // START LOADING BLOG ........................................................
     function loadBlog(blog) {
-        console.log(blog)
         const blogSection = document.querySelector('section.blog')
         blogSection.innerHTML = ''
         const blogCards = document.createElement("div");
@@ -120,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             newDiv.href = `/blog/${element.blogID}`;
 
             const truncatedTitle = element.title.length > 100 ? `${element.title.substring(0, 100)}...` : element.title;
-            const truncatedBody = element.body.length > 200 ? `${element.body.substring(0, 200)}...` : element.body;
+            const truncatedBody = element.body.length > 200 ? `${HTML(element.body.substring(0, 200))}...` : HTML(element.body);
 
             newDiv.innerHTML = `
                 <p class="title">${truncatedTitle}</p>
@@ -139,7 +137,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         postSection.innerHTML = ''
         const postCards = document.createElement("div");
         postCards.classList.add('post-cards')
-        console.log(post)
         post.forEach(element => {
             const newDiv = document.createElement("a");
             newDiv.classList.add('post-card')
@@ -161,7 +158,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         followBtn.addEventListener('click', async () => {
             try {
                 const response = await fetch(`/api/follow/${userID}`)
-                const data = await response.json()
                 getData()
             }
             catch (error) {
@@ -177,8 +173,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             const response = await fetch(`/api/user/${userID}`);
 
             const data = await response.json()
-
-            console.log(data)
 
             if (data.user) {
                 // Set profile details

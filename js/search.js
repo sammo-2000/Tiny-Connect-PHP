@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
     function insertData(data) {
-        console.log(data)
         const showSection = document.querySelector('.search')
         showSection.innerHTML = ''
         const userCards = document.createElement("div");

@@ -56,12 +56,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const data = await response.json()
 
             if (data.blog) {
-                console.log(data)
                 document.querySelector('.post-detail a').innerText = data.uploaderName
                 document.querySelector('.post-detail a').href = `/profile/${data.blog.uploaderID}`
-                document.querySelector('h1').innerText = data.blog.title
+                document.querySelector('h1').innerText = HTML(data.blog.title)
                 document.querySelector('.post-detail span').innerText = setTime(data.blog.uploadTime)
-                document.querySelector('.blog-body').innerText = data.blog.body
+                document.querySelector('.blog-body').innerText = HTML(data.blog.body)
                 if (data.blog.uploaderID == userID) {
                     const newButton = document.createElement('button')
                     newButton.classList.add('btn')

@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json()
 
         if (data != false) {
-            console.log(data)
             const chatWithSection = document.querySelector('#chat-with')
             chatWithSection.innerHTML = ''
             const userCards = document.createElement("div");

@@ -1,0 +1,26 @@
+.desktop-only {
+    display: none;
+}
+
+footer {
+    padding-bottom: 60px;
+}
+
+.mobile-search {
+    margin-left: auto;
+}
+
+.mobile-only {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    border-top: 1px solid var(--fade);
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.mobile-only ul {
+    display: flex;
+    justify-content: space-around;
+}

@@ -36,8 +36,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
             const data = await response.json()
 
-            console.log(data)
-
             btnEl.style.display = 'block'
             linkEl.style.display = 'flex'
             loadingEl.style.display = 'none'
