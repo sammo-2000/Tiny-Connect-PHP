@@ -55,6 +55,9 @@ if (isset($_SESSION['auth'])) {
     // Search
     any('/api/search', '/api/search');
     any('/api/search/$search', '/api/search');
+
+    // Home
+    any('/api/home/$type/$limit', '/api/home');
 } else {
     any('/api/signup', '/api/signup');
     any('/api/login', '/api/login');

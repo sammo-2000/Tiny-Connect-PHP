@@ -10,7 +10,7 @@
 }
 
 .about-website section:hover {
-    scale: 1.1;
+    scale: 1.03;
 }
 
 .about-website>p {
@@ -357,7 +357,7 @@ textarea:hover {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 10px;
+    padding: 10px 10px 66.5px 10px;
 }
 
 #chat .chat>div {
@@ -393,6 +393,10 @@ textarea:hover {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
 }
 
 #chat .input div,
@@ -423,3 +427,24 @@ textarea:hover {
     margin-top: 10px;
     border-top: 1px solid var(--fade);
 }
+
+.home-tabs .list {
+    border-bottom: 1px solid var(--fade);
+    padding-bottom: 10px;
+    font-family: var(--font);
+}
+
+.home-tabs section div {
+    padding-top: 10px;
+}
+
+.home-tabs section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home-tabs section button {
+    margin: auto;
+}
+
